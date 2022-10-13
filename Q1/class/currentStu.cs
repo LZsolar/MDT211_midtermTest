@@ -10,5 +10,8 @@ public class CurrStudent: Person {
     public string getEmail(){
         return this.admin.getEmail();
     }
+    public string getPassword(){
+        return this.admin.getPass();
+    }
 
 }

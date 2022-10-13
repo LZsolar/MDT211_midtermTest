@@ -32,19 +32,18 @@ class PersonList {
         }
         return false;
     }
-
-    public void countAllPerson() {
-        int teacher=0,student=0,currstudent=0,m4=0,m5=0,m6=0;
+    public bool findEmail(string mail,string pass){
         foreach(Person person in this.personList) {
-            if (person is Teacher) {teacher++;} 
-            else if (person is Student) {
-               student++;
-               if(((Student)person).getGrade()=="M4"){m4++;}
-               else if(((Student)person).getGrade()=="M5"){m5++;}
-               else if(((Student)person).getGrade()=="M6"){m6++;}
+            if (person.GetAdmin()){
+                if(person is CurrStudent){
+                    if(((CurrStudent)person).getEmail()==mail&&((CurrStudent)person).getPassword()==pass){return true;}
+                }
+                else if(person is Teacher){
+                    if(((Teacher)person).getEmail()==mail&&((Teacher)person).getPassword()==pass){return true;}
+                }
             }
-            else if (person is CurrStudent) {currstudent++;} 
         }
+        return false;
     }
     public void printAllcamper() {
         int teacher=0,student=0,currstudent=0,m4=0,m5=0,m6=0;

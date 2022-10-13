@@ -12,7 +12,7 @@ class Program
         Program.personList = new PersonList();
         checkLoginStatus();
     }
-//-----------------------------------------MENU ZONE---------------[UnFin]
+//-----------------------------------------MENU ZONE---------------[Fin..คิดว่า]
     public static void noLoginMenu(){
         Console.Clear();
         Console.WriteLine("Welcome to Idia CAMP 2022");
@@ -24,9 +24,9 @@ class Program
 
         int x = int.Parse(Console.ReadLine());
         switch(x){
-            case 1: {registerMenu();break;}
-            case 2: {showAllCamper();break;}
-            case 3: {loginMenu(); break;} 
+            case 1: {Console.Clear();registerMenu();break;}
+            case 2: {Console.Clear();showAllCamper();break;}
+            case 3: {Console.Clear();inputLoginMenu(); break;} 
             case 4: break;
             default:{Console.WriteLine("Error Command not found."); noLoginMenu();break;}
         }
@@ -43,11 +43,11 @@ class Program
 
         int x = int.Parse(Console.ReadLine());
         switch(x){
-            case 1: {registerMenu();break;}
-            case 2: {printCamper(1);break;}
-            case 3: {printCamper(2);break;} 
-            case 4: {printCamper(3);break;} 
-            case 5: {logoutMenu(); break;}
+            case 1: {Console.Clear();registerMenu();break;}
+            case 2: {Console.Clear();printCamper(1);break;}
+            case 3: {Console.Clear();printCamper(2);break;} 
+            case 4: {Console.Clear();printCamper(3);break;} 
+            case 5: {Console.Clear();logoutMenu(); break;}
             default:{Console.WriteLine("Error Command not found."); noLoginMenu();break;}
         }
     }
@@ -73,10 +73,8 @@ class Program
         Console.WriteLine("Register new Current student");
         Console.WriteLine("***************************");
         string title = selectTitle(); 
-        Console.Write("Please input your name: ");
-        string name = Console.ReadLine();
-        Console.Write("Please input your surname: ");
-        string surname = Console.ReadLine();
+        string name = inputName();
+        string surname = inputsurName();
         
         if(personList.findPersonName(title,name,surname)){
             Console.WriteLine("************************");
@@ -85,18 +83,14 @@ class Program
             InputNewCurrentStudent();
             return;
         }
-        Console.Write("Please input your studentID: ");
-        string studentID = Console.ReadLine();
-        Console.Write("Please input your age: ");
-        string age = Console.ReadLine();
-        Console.Write("Please input your allergy: ");
-        string allergy = Console.ReadLine();
-        Console.Write("Please input your religion: ");
-        string religion = Console.ReadLine();
+        string studentID = inputstudentID();
+        string age = inputAge();
+        string allergy = inputAllergy();
+        string religion = selectReligion();
         bool isAdmin=false;
         string mail ="",pass="";
         while(true){
-            Console.WriteLine("Is you an Admin? (Y/N)");
+            Console.Write("Is you an Admin? (Y/N): ");
             string x = Console.ReadLine();
             if(x=="Y"){isAdmin = true; break;}
             if(x=="N"){break;}
@@ -105,10 +99,8 @@ class Program
             Console.WriteLine("************************");
         }
         if(isAdmin){
-            Console.Write("Please input your Email: ");
-            mail = Console.ReadLine();
-            Console.Write("Please input your Password: ");
-            pass = Console.ReadLine();
+            mail = inputMail();
+            pass = inputPass();
         }
         if(personList.findEmail(mail)){
             Console.WriteLine("************************");
@@ -129,10 +121,8 @@ class Program
         Console.WriteLine("Register new Student");
         Console.WriteLine("***************************");
         string title = selectTitle(); 
-        Console.Write("Please input your name: ");
-        string name = Console.ReadLine();
-        Console.Write("Please input your surname: ");
-        string surname = Console.ReadLine();
+        string name = inputName();
+        string surname = inputsurName();
         
         if(personList.findPersonName(title,name,surname)){
             Console.WriteLine("************************");
@@ -140,16 +130,12 @@ class Program
             Console.WriteLine("************************");
             InputNewStudent();
             return;
-        }
+        } 
+        string age = inputAge();
         string grade = selectGrade();
-        Console.Write("Please input your age: ");
-        string age = Console.ReadLine();
-        Console.Write("Please input your allergy: ");
-        string allergy = Console.ReadLine();
-        Console.Write("Please input your religion: ");
-        string religion = Console.ReadLine();
-        Console.Write("Please input your school: ");
-        string school = Console.ReadLine();
+        string allergy = inputAllergy();
+        string religion = selectReligion();
+        string school = inputSchool();
             
         Student student = new Student(title,name,surname,age,grade,allergy,religion,school);
 
@@ -162,10 +148,8 @@ class Program
         Console.WriteLine("Register new Teacher");
         Console.WriteLine("***************************");
         string title = selectTitle(); 
-        Console.Write("Please input your name: ");
-        string name = Console.ReadLine();
-        Console.Write("Please input your surname: ");
-        string surname = Console.ReadLine();
+        string name = inputName();
+        string surname = inputsurName();
         
         if(personList.findPersonName(title,name,surname)){
             Console.WriteLine("************************");
@@ -174,21 +158,17 @@ class Program
             InputNewTeacher();
             return;
         }
-        Console.Write("Please input your age: ");
-        string age = Console.ReadLine();
+        string age = inputAge();
         string position = selectPosition();
-        Console.Write("Please input your allergy: ");
-        string allergy = Console.ReadLine();
-        Console.Write("Please input your religion: ");
-        string religion = Console.ReadLine();
+        string allergy = inputAllergy();
+        string religion = selectReligion();
 
         string car="";
         while(true){
-            Console.WriteLine("Bring car? (Y/N)");
+            Console.Write("Bring car? (Y/N): ");
             string x = Console.ReadLine();
             if(x=="Y"){
-                Console.Write("Please input car number: ");
-                car = Console.ReadLine(); break;}
+                car = inputCar(); break;}
             if(x=="N"){break;}
             Console.WriteLine("************************");
             Console.WriteLine("Error please try again\n");
@@ -198,7 +178,7 @@ class Program
         bool isAdmin=false;
         string mail ="",pass="";
         while(true){
-            Console.WriteLine("Is you an Admin? (Y/N)");
+            Console.Write("Is you an Admin? (Y/N): ");
             string x = Console.ReadLine();
             if(x=="Y"){isAdmin = true; break;}
             if(x=="N"){break;}
@@ -207,10 +187,8 @@ class Program
             Console.WriteLine("************************");
         }
         if(isAdmin){
-            Console.Write("Please input your Email: ");
-            mail = Console.ReadLine();
-            Console.Write("Please input your Password: ");
-            pass = Console.ReadLine();
+            mail = inputMail();
+            pass = inputPass();
         }
         if(personList.findEmail(mail)){
             Console.WriteLine("************************");
@@ -246,7 +224,6 @@ class Program
     }
 
     static string selectReligion(){
-        Console.WriteLine("*********************");
         Console.WriteLine("Please choose your Religion");
         Console.WriteLine("1 for Buddhism");
         Console.WriteLine("2 for Christianity");
@@ -296,21 +273,29 @@ class Program
                 return selectPosition();} 
         }
     }
+    static string inputName(){Console.Write("Please input your name: "); return Console.ReadLine();}
+    static string inputsurName(){Console.Write("Please input your surname: "); return Console.ReadLine();}    
+    static string inputstudentID(){Console.Write("Please input your studentID: "); return Console.ReadLine();}
+    static string inputAge(){Console.Write("Please input your age: "); return Console.ReadLine();}
+    static string inputAllergy(){Console.Write("Please input your allergy: "); return Console.ReadLine();}
+    static string inputSchool(){Console.Write("Please input your school: "); return Console.ReadLine();}
+    static string inputCar(){Console.Write("Please input your car: "); return Console.ReadLine();}
+    static string inputMail(){Console.Write("Please input your Email: "); return Console.ReadLine();}
+    static string inputPass(){Console.Write("Please input your Password: "); return Console.ReadLine();}
+
     //-----------------------------------------LOGIN ZONE---------------[FIN...For now]
-    public static void loginMenu(){
+    public static void inputLoginMenu(){
         Console.WriteLine("Welcome to log in menu.");
         Console.WriteLine("You can type | exit | for return to main menu.");
-        Console.Write("Please input email: ");
-        string mail = Console.ReadLine();
+        string mail = inputMail();
         if(mail=="exit"){checkLoginStatus();return;}
-        Console.Write("Please input password: ");
-        string pass = Console.ReadLine();
+        string pass = inputPass();
 
-        if(!personList.findEmail(mail)){
+        if(!personList.findEmail(mail,pass)){
             Console.WriteLine("************************");
             Console.WriteLine("Incorrect email or password. Please try again.\n");
             Console.WriteLine("************************");
-            loginMenu();
+            inputLoginMenu();
             return;
         }
         isLogin=true;
@@ -322,7 +307,9 @@ class Program
     }
     //-----------------------------------------ข้อ1.4 ZONE---------------[UnTest]
     public static void showAllCamper(){
-        personList.countAllPerson();
+        Console.WriteLine("--------------List of All camper------------");
+        personList.printAllcamper();
+        Console.WriteLine("--------------------------------------------");
         Console.Write("Press Enter to continue.");
         Console.ReadLine();
         checkLoginStatus();
