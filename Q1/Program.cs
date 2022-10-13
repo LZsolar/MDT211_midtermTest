@@ -38,14 +38,16 @@ class Program
         Console.WriteLine("1 for Register");
         Console.WriteLine("2 for Show all current students");
         Console.WriteLine("3 for Show all students");
-        Console.WriteLine("3 for Show all teachers");
-        Console.WriteLine("4 for log out");
+        Console.WriteLine("4 for Show all teachers");
+        Console.WriteLine("5 for log out");
 
         int x = int.Parse(Console.ReadLine());
         switch(x){
             case 1: {registerMenu();break;}
-            case 3: {break;} 
-            case 4: {logoutMenu(); break;}
+            case 2: {printCamper(1);break;}
+            case 3: {printCamper(2);break;} 
+            case 4: {printCamper(3);break;} 
+            case 5: {logoutMenu(); break;}
             default:{Console.WriteLine("Error Command not found."); noLoginMenu();break;}
         }
     }
@@ -300,7 +302,7 @@ class Program
         Console.WriteLine("You can type | exit | for return to main menu.");
         Console.Write("Please input email: ");
         string mail = Console.ReadLine();
-        if(mail=="exit"){checkLoginStatus();}
+        if(mail=="exit"){checkLoginStatus();return;}
         Console.Write("Please input password: ");
         string pass = Console.ReadLine();
 
@@ -325,5 +327,18 @@ class Program
         Console.ReadLine();
         checkLoginStatus();
     }
-
+    //-----------------------------------------ข้อ1.5-1.7 ZONE---------------[UnTest]
+    public static void printCamper(int n){
+        switch(n){
+            case 1: {Console.WriteLine("----------List of current students--------");break;}
+            case 2: {Console.WriteLine("--------------List of students------------");break;}
+            case 3: {Console.WriteLine("--------------List of teachers------------");break;}
+            default: break;
+        }
+        personList.printName(n);
+        Console.WriteLine("------------------------------------------");
+        Console.Write("Press Enter to continue.");
+        Console.ReadLine();
+        checkLoginStatus();
+    }
 }

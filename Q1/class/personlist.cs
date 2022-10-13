@@ -68,4 +68,18 @@ class PersonList {
         Console.WriteLine("All M6 students is {0}",m6);
         Console.WriteLine("---------------------------------");
     }
+
+    public void printName(int n){
+          foreach(Person person in this.personList) {
+            if (person is CurrStudent&&n==1) {
+                Console.WriteLine("{0}{1} {2}",person.GetTitle(),person.GetName(),person.GetSurame());
+            } 
+            else if (person is Student&&n==2) {
+                Console.WriteLine("{0}{1} {2}",person.GetTitle(),person.GetName(),person.GetSurame());
+            } 
+            else if (person is Teacher&&n==3) {
+                Console.WriteLine("{0}{1} {2}",person.GetTitle(),person.GetName(),person.GetSurame());
+            } 
+        }
+    }
 }
