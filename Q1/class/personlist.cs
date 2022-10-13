@@ -21,23 +21,51 @@ class PersonList {
     }
     public bool findEmail(string mail){
         foreach(Person person in this.personList) {
-            if(person.adminStatus()&&person.GetEmail()==mail){
-                return true;
+            if (person.GetAdmin()){
+                if(person is CurrStudent){
+                    if(((CurrStudent)person).getEmail()==mail){return true;}
+                }
+                else if(person is Teacher){
+                    if(((Teacher)person).getEmail()==mail){return true;}
+                }
             }
         }
         return false;
     }
 
-    /*public void FetchPersonList() {
-        Console.WriteLine("List Person");
-        Console.WriteLine("************");
-
+    public void countAllPerson() {
+        int teacher=0,student=0,currstudent=0,m4=0,m5=0,m6=0;
         foreach(Person person in this.personList) {
-            if (person is Student) {
-                Console.WriteLine("Name {0} \n Type: Student \n", person.GetName());
-            } else if (person is Teacher) {
-                Console.WriteLine("Name {0} \n Type: Teacher \n", person.GetName());
+            if (person is Teacher) {teacher++;} 
+            else if (person is Student) {
+               student++;
+               if(((Student)person).getGrade()=="M4"){m4++;}
+               else if(((Student)person).getGrade()=="M5"){m5++;}
+               else if(((Student)person).getGrade()=="M6"){m6++;}
             }
+            else if (person is CurrStudent) {currstudent++;} 
         }
-    }*/
+    }
+    public void printAllcamper() {
+        int teacher=0,student=0,currstudent=0,m4=0,m5=0,m6=0;
+        foreach(Person person in this.personList) {
+            if (person is Teacher) {teacher++;} 
+            else if (person is Student) {
+               student++;
+               if(((Student)person).getGrade()=="M4"){m4++;}
+               else if(((Student)person).getGrade()=="M5"){m5++;}
+               else if(((Student)person).getGrade()=="M6"){m6++;}
+            }
+            else if (person is CurrStudent) {currstudent++;} 
+        }
+
+        Console.WriteLine("----------Count all camper--------");
+        Console.WriteLine("All Teachers is {0}",teacher);
+        Console.WriteLine("All Students is {0}",student);
+        Console.WriteLine("All Currunt Students is {0}",currstudent);
+        Console.WriteLine("All M4 students is {0}",m4);
+        Console.WriteLine("All M5 students is {0}",m5);
+        Console.WriteLine("All M6 students is {0}",m6);
+        Console.WriteLine("---------------------------------");
+    }
 }

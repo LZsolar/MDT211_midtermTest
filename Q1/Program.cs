@@ -25,22 +25,29 @@ class Program
         int x = int.Parse(Console.ReadLine());
         switch(x){
             case 1: {registerMenu();break;}
-            case 4: break; 
+            case 2: {showAllCamper();break;}
+            case 3: {loginMenu(); break;} 
+            case 4: break;
             default:{Console.WriteLine("Error Command not found."); noLoginMenu();break;}
         }
     }
     public static void LoginMenu(){
         Console.Clear();
-        Console.WriteLine("Welcome to Idia CAMP 2022");
+        Console.WriteLine("Welcome ADMIN!");
         Console.WriteLine("What you would like to do?");
         Console.WriteLine("1 for Register");
         Console.WriteLine("2 for Show all current students");
         Console.WriteLine("3 for Show all students");
         Console.WriteLine("3 for Show all teachers");
-        Console.WriteLine("Other for Exit");
+        Console.WriteLine("4 for log out");
 
         int x = int.Parse(Console.ReadLine());
-        if(x==1){registerMenu();}
+        switch(x){
+            case 1: {registerMenu();break;}
+            case 3: {break;} 
+            case 4: {logoutMenu(); break;}
+            default:{Console.WriteLine("Error Command not found."); noLoginMenu();break;}
+        }
     }
     public static void checkLoginStatus(){
         if(isLogin){LoginMenu();}
@@ -135,6 +142,7 @@ class Program
         string grade = selectGrade();
         Console.Write("Please input your age: ");
         string age = Console.ReadLine();
+        Console.Write("Please input your allergy: ");
         string allergy = Console.ReadLine();
         Console.Write("Please input your religion: ");
         string religion = Console.ReadLine();
@@ -286,4 +294,36 @@ class Program
                 return selectPosition();} 
         }
     }
+    //-----------------------------------------LOGIN ZONE---------------[FIN...For now]
+    public static void loginMenu(){
+        Console.WriteLine("Welcome to log in menu.");
+        Console.WriteLine("You can type | exit | for return to main menu.");
+        Console.Write("Please input email: ");
+        string mail = Console.ReadLine();
+        if(mail=="exit"){checkLoginStatus();}
+        Console.Write("Please input password: ");
+        string pass = Console.ReadLine();
+
+        if(!personList.findEmail(mail)){
+            Console.WriteLine("************************");
+            Console.WriteLine("Incorrect email or password. Please try again.\n");
+            Console.WriteLine("************************");
+            loginMenu();
+            return;
+        }
+        isLogin=true;
+        checkLoginStatus();
+    }
+    public static void logoutMenu(){
+        isLogin=false;
+        checkLoginStatus();
+    }
+    //-----------------------------------------ข้อ1.4 ZONE---------------[UnTest]
+    public static void showAllCamper(){
+        personList.countAllPerson();
+        Console.Write("Press Enter to continue.");
+        Console.ReadLine();
+        checkLoginStatus();
+    }
+
 }
