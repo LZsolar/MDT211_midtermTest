@@ -58,14 +58,12 @@ class PersonList {
             else if (person is CurrStudent) {currstudent++;} 
         }
 
-        Console.WriteLine("----------Count all camper--------");
         Console.WriteLine("All Teachers is {0}",teacher);
         Console.WriteLine("All Students is {0}",student);
         Console.WriteLine("All Currunt Students is {0}",currstudent);
         Console.WriteLine("All M4 students is {0}",m4);
         Console.WriteLine("All M5 students is {0}",m5);
         Console.WriteLine("All M6 students is {0}",m6);
-        Console.WriteLine("---------------------------------");
     }
 
     public void printName(int n){

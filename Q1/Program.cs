@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+64120501023 พรชนก จรัสไกรสร
+*/
+using System;
 using System.Collections.Generic;
 
 class Program
@@ -305,7 +308,7 @@ class Program
         isLogin=false;
         checkLoginStatus();
     }
-    //-----------------------------------------ข้อ1.4 ZONE---------------[UnTest]
+    //-----------------------------------------ข้อ1.4 ZONE---------------[FIN]
     public static void showAllCamper(){
         Console.WriteLine("--------------List of All camper------------");
         personList.printAllcamper();
@@ -314,7 +317,7 @@ class Program
         Console.ReadLine();
         checkLoginStatus();
     }
-    //-----------------------------------------ข้อ1.5-1.7 ZONE---------------[UnTest]
+    //-----------------------------------------ข้อ1.5-1.7 ZONE---------------[FIN]
     public static void printCamper(int n){
         switch(n){
             case 1: {Console.WriteLine("----------List of current students--------");break;}
